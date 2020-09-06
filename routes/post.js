@@ -2,6 +2,8 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const AWS = require('aws-sdk');
+const multerS3 = require('multer-s3');
 
 const { Post, Hashtag } = require('../models');
 const { isLoggedIn } = require('./middlewares');
@@ -15,25 +17,46 @@ try {
     fs.mkdirSync('uploads');
 }
 
+
+AWS.config.update({  //AWS에 관한 설정
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+    region: 'ap-northeast-2',
+});
 const upload = multer({
-    storage: multer.diskStorage({  //파일지정 관련옵션 설정
-        destination(req, file, cb) {
-            cb(null, 'uploads/');
-        },
-        filename(req, file, cb) {  //저장할 파일이름
-            const ext = path.extname(file.originalname); //파일경로의 확장자반환
-            //path.basename 파일경로의 파일이름부분의 반환
-            cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+    storage: multerS3({
+        s3: new AWS.S3(),
+        bucket: 'nodebird-project',
+        key(req, file, cb) {
+            cb(null, `original/${Date.now()}${path.basename(file.originalname)}`);
         },
     }),
     limits: { fileSize: 5 * 1024 * 1024 },
 });
-
-// 이미지 하나를 업로드 받은뒤 이미지의 저장경로를 클리아이언트로 응답
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
     console.log(req.file);
-    res.json({ url: `/img/${req.file.filename}` });
+    res.json({ url: req.file.location }); //버킷이미지주소가 들어있음, 이주소를 클라이언트에게 보냄
 });
+// const upload = multer({
+//     storage: multer.diskStorage({  //파일지정 관련옵션 설정
+//         destination(req, file, cb) {
+//             cb(null, 'uploads/');
+//         },
+//         filename(req, file, cb) {  //저장할 파일이름
+//             const ext = path.extname(file.originalname); //파일경로의 확장자반환
+//             //path.basename 파일경로의 파일이름부분의 반환
+//             cb(null, path.basename(file.originalname, ext) + Date.now() + ext);
+//         },
+//     }),
+//     limits: { fileSize: 5 * 1024 * 1024 },
+// });
+//
+// // 이미지
+// 하나를 업로드 받은뒤 이미지의 저장경로를 클리아이언트로 응답
+// router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
+//     console.log(req.file);
+//     res.json({ url: `/img/${req.file.filename}` });
+// });
 
 const upload2 = multer();
 router.post('/', isLoggedIn, upload2.none(), async (req, res, next) => {

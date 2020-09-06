@@ -2,10 +2,10 @@ require('dotenv').config();
 
 module.exports = {
     development: {
-        username: 'root',
+        username: 'nodebird',
         password: process.env.SEQUELIZE_PASSWORD,
-        database: 'nodebird',
-        host: '127.0.0.1',
+        database: 'dbnodebird',
+        host: 'ls-d2399811f130b5f29f3bd7f4d67caf7c35476796.cuvukhote9vs.ap-northeast-2.rds.amazonaws.com',
         dialect: 'mysql',
     },
     test: {
@@ -16,11 +16,13 @@ module.exports = {
         dialect: "mysql"
     },
     production: {
-        username: 'root',
+        username: 'nodebird',
         password: process.env.SEQUELIZE_PASSWORD,
-        database: 'nodebird',
+        database: 'dbnodebird',
         host: '127.0.0.1',
-        dialect: 'mysql',
+        dialect: 'ls-d2399811f130b5f29f3bd7f4d67caf7c35476796.cuvukhote9vs.ap-northeast-2.rds.amazonaws.com',
         logging: false,
     },
 };
+
+
