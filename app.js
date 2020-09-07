@@ -69,7 +69,7 @@ const sessionOption = {
     store: new RedisStore({ client: redisClient }),
 };
 if (process.env.NODE_ENV === 'production') {
-    sessionOption.proxy = true;
+    sessionOption.proxy = true;  //https 적용을 위해 노드 서버 앞에 다른 서버를 두었을떄
     // sessionOption.cookie.secure = true;
 }
 app.use(session(sessionOption));

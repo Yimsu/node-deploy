@@ -35,7 +35,9 @@ const upload = multer({
 });
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
     console.log(req.file);
-    res.json({ url: req.file.location }); //버킷이미지주소가 들어있음, 이주소를 클라이언트에게 보냄
+    const originalUrl = req.file.location;
+    const url = originalUrl.replace(/\/original\//, '/thumb/');
+    res.json({ url, originalUrl });
 });
 // const upload = multer({
 //     storage: multer.diskStorage({  //파일지정 관련옵션 설정
