@@ -1,11 +1,15 @@
+/* passport 모듈
+ : 회원가입과 로그인을 직접 구현할 수 있지만 세션과 쿠키처리등 복잡한 작업이 많기 때문에
+ 검증된 모듈을 사용, 서비스를 사용할 수 있게 해주는 여권 같은 역할 */
+
 const passport = require('passport');
 const local = require('./localStrategy');
 const kakao = require('./kakaoStrategy');
 const User = require('../models/user');
 
 module.exports = () => {
-    //로그인시 실행, req.session 객체에 어떤 데이터를 저장할지 정하는 메서드
-    //매개변수로 user을 받고, done함수에 두번째 인수로 user.id를 넘김
+    // 로그인시 실행, req.session 객체에 어떤 데이터를 저장할지 정하는 메서드
+    // 매개변수로 user을 받고, done함수에 두번째 인수로 user.id를 넘김
     passport.serializeUser((user, done) => {
         //첫번째인수 : 에러발생시사용, 두번쨰인수 : 저장하고싶은데이터를 넣음
         done(null, user.id);

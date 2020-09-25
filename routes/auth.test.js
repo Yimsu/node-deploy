@@ -2,28 +2,28 @@ const request = require('supertest');
 const { sequelize } = require('../models');
 const app = require('../app');
 
-//현재 테스트를 실행하기 전에 수행
+// 현재 테스트 실행되기 전에 수행되는 코드
 beforeAll(async () => {
-    await sequelize.sync();  //데이터베이스에 테이블을 생성
+    await sequelize.sync(); // 데이터베이스에 테이블 생
 });
 
-//회원가입 테스트
+// 회원가입을 테스트
 describe('POST /join', () => {
     test('로그인 안 했으면 가입', (done) => {
         request(app)
             .post('/auth/join')
-            .send({  //데이터보내기
+            .send({
                 email: 'zerohch0@gmail.com',
                 nick: 'zerocho',
                 password: 'nodejsbook',
             })
-            .expect('Location', '/')  //Location 헤더가 / 인지
-            .expect(302, done);  // 응답의 상태코드가 302인지 테스트
+            .expect('Location', '/')
+            .expect(302, done);
     });
 });
 
-//로그인 테스트
 describe('POST /login', () => {
+    // 로그인한 상태에서 회원가입을 시도하는 경우
     const agent = request.agent(app);
     beforeEach((done) => {
         agent
@@ -35,7 +35,6 @@ describe('POST /login', () => {
             .end(done);
     });
 
-    //로그인된 agentfh 회원가입 테스트진행
     test('이미 로그인했으면 redirect /', (done) => {
         const message = encodeURIComponent('로그인한 상태입니다.');
         agent
@@ -49,8 +48,6 @@ describe('POST /login', () => {
             .expect(302, done);
     });
 });
-
-
 
 describe('POST /login', () => {
     test('가입되지 않은 회원', async (done) => {
@@ -116,7 +113,6 @@ describe('GET /logout', () => {
     });
 });
 
-// 데이터를 정리
 afterAll(async () => {
     await sequelize.sync({ force: true });
 });

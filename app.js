@@ -1,5 +1,3 @@
-
-//모델과서버를 연결
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
@@ -14,7 +12,8 @@ const redis = require('redis');
 const RedisStore = require('connect-redis')(session);
 
 dotenv.config();
-const redisClient = redis.createClient({
+//꼭 dotenv.config(); 밑에 있어야함!
+const redisClient = redis.createClient({// 접속정보 입력
     url: `redis://${process.env.REDIS_HOST}:${process.env.REDIS_PORT}`,
     password: process.env.REDIS_PASSWORD,
 });
@@ -95,7 +94,6 @@ app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error');
 });
-
 
 
 module.exports = app;

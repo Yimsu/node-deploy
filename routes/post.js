@@ -2,14 +2,15 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const AWS = require('aws-sdk');
-const multerS3 = require('multer-s3');
+const AWS = require('aws-sdk'); //aws기능을 노드에서 사용할수 있게 해주는 패키지
+const multerS3 = require('multer-s3');  //multer에서 s3로 이미지를 업로드
 
 const { Post, Hashtag } = require('../models');
 const { isLoggedIn } = require('./middlewares');
 
 const router = express.Router();
 
+// upload 폴더가 있다면 읽어오고, 없다면 만듬
 try {
     fs.readdirSync('uploads');  //디렉토리를 읽어온다
 } catch (error) {
@@ -17,25 +18,27 @@ try {
     fs.mkdirSync('uploads');
 }
 
-
-AWS.config.update({  //AWS에 관한 설정
+//AWS에 관한 설정
+AWS.config.update({
     accessKeyId: process.env.S3_ACCESS_KEY_ID,
     secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
     region: 'ap-northeast-2',
 });
+
 const upload = multer({
     storage: multerS3({
         s3: new AWS.S3(),
         bucket: 'nodebird-project',
-        key(req, file, cb) {
+        key(req, file, cb) {//파일명(저장할 파일 설정)
             cb(null, `original/${Date.now()}${path.basename(file.originalname)}`);
         },
     }),
     limits: { fileSize: 5 * 1024 * 1024 },
 });
+
 router.post('/img', isLoggedIn, upload.single('img'), (req, res) => {
     console.log(req.file);
-    const originalUrl = req.file.location;
+    const originalUrl = req.file.location; //eq.file.location에 s3버킷 이미지 주소가 담겨있음
     const url = originalUrl.replace(/\/original\//, '/thumb/');
     res.json({ url, originalUrl });
 });

@@ -33,6 +33,7 @@ router.get('/', async (req, res, next) => {
             },
             order: [['createdAt', 'DESC']],
         });
+        // 클라이언트에게 main페이지를 {title,twits}로 렌더링 해서 보내겠다
         res.render('main', {
             title: 'NodeBird',
             twits: posts, // 게시글조회 결과 twits에 넣어 렌더링

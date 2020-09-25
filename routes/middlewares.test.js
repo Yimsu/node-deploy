@@ -1,15 +1,15 @@
-const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
+const {isLoggedIn , isNotLoggedIn} = require('./middlewares');
 
-describe('isLoggedIn', () => {
+// 테스트를 그룹화해주는 역할
+describe('isLoggedIn', () =>{
     const res = {
         status: jest.fn(() => res),
         send: jest.fn(),
     };
-    const next = jest.fn();  //함수를 모킹
+    const next = jest.fn();
 
     test('로그인 되어있으면 isLoggedIn이 next를 호출해야 함', () => {
         const req = {
-            // 로그인여부를 알려주는 함수
             isAuthenticated: jest.fn(() => true),
         };
         isLoggedIn(req, res, next);
@@ -25,6 +25,7 @@ describe('isLoggedIn', () => {
         expect(res.send).toBeCalledWith('로그인 필요');
     });
 });
+
 
 describe('isNotLoggedIn', () => {
     const res = {

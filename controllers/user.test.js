@@ -1,4 +1,3 @@
-//실제데이터베이스를 연결할수 없어서 테스트용
 jest.mock('../models/user');
 const User = require('../models/user');
 const { addFollowing } = require('../controllers/user');

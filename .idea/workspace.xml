@@ -20,12 +20,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ee89bd0e-d746-4a3a-8652-f22a05cd45f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/user.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/user.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/clover.xml" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/clover.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/coverage-final.json" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/coverage-final.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/controllers/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/controllers/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/controllers/user.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/controllers/user.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/models/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/models/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/models/user.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/models/user.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/routes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/routes/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov-report/routes/middlewares.js.html" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov-report/routes/middlewares.js.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/coverage/lcov.info" beforeDir="false" afterPath="$PROJECT_DIR$/coverage/lcov.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/passport/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/passport/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/auth.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/middlewares.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/middlewares.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/middlewares.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/middlewares.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/page.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/post.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/main.html" afterDir="false" />
     </list>
@@ -85,7 +99,10 @@
       <updated>1598620359301</updated>
       <workItem from="1598620360418" duration="41208000" />
       <workItem from="1598962763649" duration="12162000" />
-      <workItem from="1599142389052" duration="27877000" />
+      <workItem from="1599142389052" duration="51544000" />
+      <workItem from="1599710913072" duration="237000" />
+      <workItem from="1599788005834" duration="13960000" />
+      <workItem from="1599912621577" duration="2000" />
     </task>
     <servers />
   </component>
@@ -105,6 +122,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="906" y="312" key="#Log_Highlighting_(ideolog)" timestamp="1599142927402">
@@ -184,13 +202,13 @@
       <screen x="0" y="23" width="1680" height="947" />
     </state>
     <state width="824" height="314" key="GridCell.Tab.3.right/0.23.1680.947@0.23.1680.947" timestamp="1598939530407" />
-    <state x="985" y="210" width="615" height="494" key="find.popup" timestamp="1599402441650">
+    <state x="985" y="210" width="615" height="518" key="find.popup" timestamp="1599560071046">
       <screen x="0" y="23" width="1680" height="952" />
     </state>
     <state x="944" y="250" width="615" height="490" key="find.popup/0.23.1680.947@0.23.1680.947" timestamp="1598842944930" />
     <state x="968" y="447" width="615" height="491" key="find.popup/0.23.1680.948@0.23.1680.948" timestamp="1599133183733" />
     <state x="944" y="251" width="615" height="490" key="find.popup/0.23.1680.951@0.23.1680.951" timestamp="1598715479551" />
-    <state x="985" y="210" width="615" height="494" key="find.popup/0.23.1680.952@0.23.1680.952" timestamp="1599402441650" />
+    <state x="985" y="210" width="615" height="518" key="find.popup/0.23.1680.952@0.23.1680.952" timestamp="1599560071046" />
     <state x="985" y="211" width="615" height="495" key="find.popup/0.23.1680.955@0.23.1680.955" timestamp="1599142147862" />
     <state x="892" y="234" key="run.anything.popup" timestamp="1599405484996">
       <screen x="0" y="23" width="1680" height="952" />

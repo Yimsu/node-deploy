@@ -1,3 +1,5 @@
+/* user 라우터에서 응답을 보내는 미들웨어 */
+
 const User = require('../models/user');
 
 exports.addFollowing = async (req, res, next) => {
